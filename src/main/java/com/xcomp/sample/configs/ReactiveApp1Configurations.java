@@ -31,6 +31,7 @@ public class ReactiveApp1Configurations {
 	 * 
 	 * @return object for ObjectMapper with all the pre set properties.
 	 */
+	@SuppressWarnings("deprecation")
 	@Bean("jacksonObjectMapper")
 	public ObjectMapper jacksonObjectMapper() {
 		ObjectMapper jacksonObjectMapper = new ObjectMapper();
