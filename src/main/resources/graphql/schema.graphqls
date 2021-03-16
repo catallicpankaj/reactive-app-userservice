@@ -1,0 +1,25 @@
+type User {
+    data: Data
+    support: Support
+}
+
+type Data {
+    id: Int
+    email: String
+    firstName: String
+    lastName: String
+    avatar: String
+}
+
+type Support {
+    url: String
+    text: String
+}
+
+schema{
+    query: GetUserDetailsByIdQuery
+}
+
+type GetUserDetailsByIdQuery{
+    getUserDetails(id: String, delayTime: String): User
+}
