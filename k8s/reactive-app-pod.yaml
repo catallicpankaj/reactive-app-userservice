@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: reactive-app-pod
+  labels:
+    tier: backend
+    app: reactive-app-demok8s
+spec:
+  containers:
+    - name: reactive-app
+      image: catallicpankaj/reactiveapp1:latest
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8080
+  serviceAccount: test-sa

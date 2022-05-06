@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: reactive-app-deployment
+  labels:
+    tier: backend
+    app: reactive-app-demok8s
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: backend
+      app: reactive-app-demok8s
+  template:
+    metadata:
+      name: reactive-app-pod
+      labels:
+        tier: backend
+        app: reactive-app-demok8s
+    spec:
+      containers:
+        - name: reactive-app
+          image: catallicpankaj/reactiveapp1:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe: 
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3          
