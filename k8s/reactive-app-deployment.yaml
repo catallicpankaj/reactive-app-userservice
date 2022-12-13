@@ -6,7 +6,7 @@ metadata:
     tier: backend
     app: reactive-app-demok8s
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       tier: backend
@@ -20,19 +20,8 @@ spec:
     spec:
       containers:
         - name: reactive-app
-          image: catallicpankaj/reactiveapp1:latest
+          image: catallicpankaj/reactive-app-user:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8080
-            initialDelaySeconds: 3
-            periodSeconds: 3
-          readinessProbe: 
-            httpGet:
-              path: /health
-              port: 8080
-            initialDelaySeconds: 3
-            periodSeconds: 3          
+               
