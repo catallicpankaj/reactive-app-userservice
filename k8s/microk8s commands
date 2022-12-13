@@ -1,0 +1,11 @@
+docker save catallicpankaj/reactive-app-user > reactiveapp.tar
+multipass transfer reactiveapp.tar microk8s-vm:/tmp/reactiveapp.tar
+microk8s ctr image import /tmp/reactiveapp.tar
+microk8s ctr images ls
+
+
+microk8s enable ingress
+
+microk8s enable dns
+
+microk8s enable metallb
